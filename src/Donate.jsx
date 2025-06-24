@@ -54,10 +54,12 @@ const Donate = () => {
     formData.append('latitude', location.lat);
     formData.append('longitude', location.lng);
 
+      console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL)
+
     try {
       const token = localStorage.getItem('token');
 
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/donate`, formData, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/donate`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -75,7 +77,9 @@ const Donate = () => {
       setName('');
       setImage(null);
       document.querySelector('input[type="file"]').value = '';
-    } catch (error) {
+
+    } 
+    catch (error) {
       console.error('Donation error:', error.response?.data, error.message);
       setMessage({
         type: 'error',
