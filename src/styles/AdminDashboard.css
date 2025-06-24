@@ -1,0 +1,132 @@
+/* Container styling */
+.admin-dashboard {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Title */
+.admin-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+/* Filter dropdown */
+.filter-dropdown {
+  display: block;
+  margin: 0 auto 2rem auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.filter-dropdown:focus {
+  border-color: #2c3e50;
+  outline: none;
+}
+
+/* Donation cards layout */
+.donation-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Default donation card style */
+.donation-card {
+  background: linear-gradient(145deg, #f9f9f9, #e3eefe);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  border-left: 6px solid #6c63ff; /* Default border */
+}
+
+/* Status-based backgrounds */
+.donation-card.available {
+  background: linear-gradient(135deg, #e6fffa, #ffffff);
+  border-left-color: #2ecc71; /* Green */
+}
+
+.donation-card.claimed {
+  background: linear-gradient(135deg, #fff3e6, #ffffff);
+  border-left-color: #e67e22; /* Orange */
+}
+
+/* Hover effect */
+.donation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Image */
+.donation-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+}
+
+/* Title inside card */
+.donation-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+/* Map link */
+.map-link {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.map-link:hover {
+  color: #1d6fa5;
+  text-decoration: underline;
+}
+
+/* Center single card if only one is present */
+.donation-cards:has(.donation-card:nth-child(1):last-child) {
+  display: flex;
+  justify-content: center;
+}
+
+.donation-cards:has(.donation-card:nth-child(1):last-child) .donation-card {
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Default card style (already applied) */
+.donation-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Color by status */
+.donation-card.available {
+  background: linear-gradient(135deg, #e0ffe9, #ffffff);
+  border-left: 6px solid #2ecc71;
+}
+
+.donation-card.claimed {
+  background: linear-gradient(135deg, #fff5e0, #ffffff);
+  border-left: 6px solid #e67e22;
+}
+
+.donation-card.expired {
+  background: linear-gradient(135deg, #ffe0e0, #ffffff);
+  border-left: 6px solid #e74c3c;
+}

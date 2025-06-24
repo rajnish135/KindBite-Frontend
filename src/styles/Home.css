@@ -1,0 +1,183 @@
+.home-container {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* HERO SECTION */
+.hero {
+  background: url('../../public/IMAGE 2.avif') center/cover no-repeat;
+  filter: brightness(0.95) contrast(1.05) saturate(1.1);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.75), rgba(0, 0, 0, 0.55));
+  border-radius: 1.25rem;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 800px;
+  margin: auto;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-content:hover {
+  transform: scale(1.015);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content h1 {
+  font-size: 3.4rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #ffcc70, #ff8c42, #ff3c38);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+.hero-content h1:hover {
+  transform: scale(1.05);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.hero-buttons .btn {
+  background: linear-gradient(to right, #ffe29f, #ffa99f);
+  color: #1a1a1a;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+}
+
+.hero-buttons .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(255, 87, 34, 0.35);
+}
+
+.btn.secondary {
+  background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+}
+
+.btn.secondary:hover {
+  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);
+}
+
+/* FEATURES SECTION */
+.features {
+  padding: 70px 30px;
+  background: #ffffff;
+  color: #222;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.features h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: #38d9a9;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Feature Cards */
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0 10px;
+}
+
+.card {
+  background: #fefefe;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #333;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  height: 105px;
+  margin-bottom: 20px;
+
+  border: 2px solid #a2f4cc;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: #2c2c2c;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* FOOTER */
+.footer {
+  padding: 20px;
+  background: linear-gradient(to right, #1c1c1c, #2f2f2f);
+  color: #f1f1f1;
+  font-size: 0.95rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

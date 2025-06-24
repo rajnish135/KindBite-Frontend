@@ -1,0 +1,100 @@
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-container .input-field input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.register-container .submit-btn {
+  padding: 10px;
+  font-size: 1.1rem;
+  background-color: #3c2f2f; /* Deep brown */
+  color: #f5f5dc; /* Creamy white */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-container .submit-btn:hover {
+  background-color: #556b2f; /* Olive green */
+}
+
+.register-container .error-message {
+  color: #d32f2f;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.register-container .success-message {
+  color: #2e7d32;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.register-container p {
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+.register-container a {
+  color: #3c2f2f;
+  text-decoration: none;
+}
+
+.register-container a:hover {
+  text-decoration: underline;
+}
+
+/* Role dropdown */
+.input-field select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  transition: border 0.3s ease;
+}
+
+.input-field select:focus {
+  outline: none;
+  border-color: #ffcc00; 
+  background-color: #fff;
+}
+
+.input-field select {
+  background-image: url("data:image/svg+xml,%3Csvg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+}

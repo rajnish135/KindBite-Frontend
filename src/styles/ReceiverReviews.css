@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Urbanist', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+}
+
+/* Container */
+.donor-reviews-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease-in-out;
+  color: #333;
+}
+
+/* Heading */
+.reviews-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Average Rating */
+.average-rating {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: #444;
+}
+
+.star {
+  color: #fbc02d;
+  font-size: 1.2rem;
+}
+
+/* Review Grid */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual Review Card */
+.review-card {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  animation: slideUp 0.5s ease-in-out;
+  border-left: 5px solid #00c6ff;
+}
+
+.review-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: linear-gradient(to bottom right, #e0f7fa, #f1f8ff);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Text Inside Review */
+.review-card p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Error + No Reviews */
+.error-message,
+.no-reviews {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #d32f2f;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .donor-reviews-container {
+    padding: 1.5rem;
+  }
+
+  .reviews-heading {
+    font-size: 2rem;
+  }
+
+  .average-rating {
+    font-size: 1rem;
+  }
+
+  .review-card {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,213 @@
+/* Login.css */
+:root {
+--primary-color: #8bc34a;      /* Fresh Green (like lettuce or herbs) */
+--secondary-color: #ff9800;    /* Warm Orange (like ripe mango or spice) */
+--error-color: #d32f2f;        /* Rich Tomato Red (natural red alert) */
+--success-color: #4caf50;      /* Organic Green (trust, success) */
+--text-color: #3e2723;         /* Dark Chocolate (warm & readable) */
+--light-gray: #fef9f4;         /* Creamy White (food-safe, warm background) */
+--medium-gray: #d7ccc8;        /* Light Cocoa (neutral card bg or borders) */
+--dark-gray: #795548;          /* Coffee Brown (grounded tone for contrast) */
+}
+
+.form-container {
+  max-width: 400px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 600;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.input-field {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.input-field input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+  background-color: #fff;
+}
+
+.input-field input::placeholder {
+  color: var(--medium-gray);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to right, #2980b9, #27ae60);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.error-message {
+  color: var(--error-color);
+  background-color: #fadbd8;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  animation: shake 0.5s;
+}
+
+.success-message {
+  color: var(--success-color);
+  background-color: #d5f5e3;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  animation: bounce 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+p {
+  text-align: center;
+  margin-top: 1.25rem;
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+}
+
+p a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+p a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.g-recaptcha {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  transform: scale(0.95);
+  transform-origin: center;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .input-field input {
+    font-size: 0.95rem;
+    padding: 0.65rem 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .error-message,
+  .success-message {
+    font-size: 0.85rem;
+    padding: 0.65rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .input-field input {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.85rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .g-recaptcha {
+    transform: scale(0.85);
+  }
+}

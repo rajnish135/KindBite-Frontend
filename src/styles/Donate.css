@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Urbanist', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #222;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 214, 255, 0.35), rgba(200, 225, 255, 0.35));
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.6s ease-in-out;
+  color: #222;
+}
+
+.form-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.input-field {
+  margin-bottom: 1.5rem;
+}
+
+.input-field input[type="text"],
+.input-field input[type="file"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.input-field input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 10px #a6c1ee;
+  background: #f0f8ff;
+}
+
+.map-container {
+  margin: 2rem 0;
+}
+
+.map-container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.success-message, .error-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.success-message {
+  background: rgba(0, 255, 135, 0.2);
+  color: #00b894;
+  box-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
+}
+
+.error-message {
+  background: rgba(255, 50, 50, 0.2);
+  color: #d63031;
+  box-shadow: 0 0 10px rgba(255, 50, 50, 0.3);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .form-container h2 {
+    font-size: 2rem;
+  }
+
+  .submit-btn {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}

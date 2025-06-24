@@ -1,0 +1,88 @@
+
+.review-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background: linear-gradient(to right, #f8fbff, #eef3ff);
+  min-height: 100vh;
+}
+
+.review-form {
+  width: 100%;
+  max-width: 450px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.review-form:hover {
+  transform: translateY(-4px);
+}
+
+.review-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #333;
+}
+
+.review-select,
+.review-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-select:focus,
+.review-textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.review-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.review-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.review-button:hover {
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+}
+
+.review-message {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #28a745;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
