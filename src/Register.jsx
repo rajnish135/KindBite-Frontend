@@ -13,7 +13,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('donor');
-  const [captchaToken, setCaptchaToken] = useState('');
+  // const [captchaToken, setCaptchaToken] = useState('');
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Register = () => {
         password,
         role,
         email,
-        captchaToken,
+        // captchaToken,
       });
 
       console.log("Register User Response", response.data);
@@ -91,10 +91,10 @@ const Register = () => {
           </select>
         </div>
 
-        <ReCAPTCHA
+        {/* <ReCAPTCHA
           sitekey="6LcE8jQrAAAAAAoBOIdjX3zrQLjDyU5xgvpoSqDH"
           onChange={setCaptchaToken}
-        />
+        /> */}
 
         <button type="submit" className="submit-btn">Register</button>
       </form>

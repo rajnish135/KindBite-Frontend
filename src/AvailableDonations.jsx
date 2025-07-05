@@ -39,7 +39,7 @@ const AvailableDonations = () => {
         });
 
         console.log("ALL AVAILABLE FOOD ITEMS", res.data);
-        dispatch(setDonations(res.data.data)); // ✅ use setDonations reducer
+        dispatch(setDonations(res.data.data)); 
       } 
       catch (err) {
         console.error('Error fetching donations:', err);

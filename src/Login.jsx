@@ -11,7 +11,7 @@ import { login } from '../store/AuthSlice.js';
 const Login = ({isAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [captchaToken, setCaptchaToken] = useState('');
+  // const [captchaToken, setCaptchaToken] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Login = ({isAuthenticated }) => {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
         username,
         password,
-        captchaToken,
+        // captchaToken,
       });
 
       const token = response.data.token;
@@ -81,10 +81,10 @@ const Login = ({isAuthenticated }) => {
           />
         </div>
 
-        <ReCAPTCHA
+        {/* <ReCAPTCHA
           sitekey="6LcE8jQrAAAAAAoBOIdjX3zrQLjDyU5xgvpoSqDH"
           onChange={setCaptchaToken}
-        />
+        /> */}
 
         <button type="submit" className="submit-btn">Login</button>
 
