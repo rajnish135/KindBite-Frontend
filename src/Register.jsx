@@ -4,7 +4,7 @@ import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './styles/Register.css';
 
-// ✅ Email format validation
+
 const validateEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
@@ -21,7 +21,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // ✅ Frontend email validation
+    
     if (!validateEmail(email)) {
       setMessage({ type: 'error', text: 'Invalid email format.' });
       return;

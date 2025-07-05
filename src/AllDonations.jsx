@@ -22,11 +22,11 @@ const AllDonations = () => {
   useEffect(() => {
 
   socket.on('connect', () => {
-    console.log("✅ Connected to socket with ID:", socket.id);
+    console.log("Connected to socket with ID:", socket.id);
   });
 
    socket.on('connect_error', (err) => {
-    console.error("❌ Socket connection error:", err);
+    console.error("Socket connection error:", err);
   });
 
 
@@ -206,7 +206,7 @@ console.log("Logged-in userId:", userId);
 
                  {
                     donation.status === 'picked' &&
-                    !donation.reviewed && ( // 👈 hides the button if already reviewed
+                    !donation.reviewed && ( 
                       <Link to={`/submitReview/${donation._id}`}>
                         <button>Leave a Review</button>
                       </Link>
