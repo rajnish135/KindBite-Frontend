@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import './styles/App.css';
@@ -21,6 +21,7 @@ const Donate = () => {
   const [message, setMessage] = useState(null);
   const [name, setName] = useState('Anonymous');
   const [location, setLocation] = useState(center);
+  const [availableTime,setAvailableTime] = useState('');
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyDWqYZHby0RusP-hTbfNip_C_6VM7ap34U',
@@ -38,6 +39,7 @@ const Donate = () => {
   }, []);
 
   const handleDonate = async (e) => {
+
     e.preventDefault();
 
     if (!foodDetails || !quantity || !image) {
@@ -53,8 +55,9 @@ const Donate = () => {
     formData.append('name', name);
     formData.append('latitude', location.lat);
     formData.append('longitude', location.lng);
+    formData.append('availableTime', availableTime);
 
-      console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL)
+    console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL)
 
     try {
       const token = localStorage.getItem('token');
@@ -76,6 +79,7 @@ const Donate = () => {
       setQuantity('');
       setName('');
       setImage(null);
+      setAvailableTime('');
       document.querySelector('input[type="file"]').value = '';
 
     } 
@@ -116,8 +120,13 @@ const Donate = () => {
             </GoogleMap>
           )}
         </div>
+         
+        <div className="input-field">
+          <input type="text" name="availableTime" placeholder='Enter pickup time  e.g., "6 PM - 8 PM"' value={availableTime} onChange={ (e) => setAvailableTime(e.target.value)} />
+        </div>
 
         <button type="submit" className="submit-btn">Donate</button>
+        
       </form>
 
       {message && (

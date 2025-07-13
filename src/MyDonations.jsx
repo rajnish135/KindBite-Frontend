@@ -98,9 +98,9 @@ const MyDonations = () => {
                     ? donation.receiver.username
                     : 'Not yet claimed'}
                 </p>
-                <p>
-                  <strong>Quantity:</strong> {donation.quantity || 'N/A'}
-                </p>
+
+                <p><strong>Quantity:</strong> {donation.quantity || 'N/A'}</p>
+
                 <p>
                   <strong>Status:</strong>{' '}
                   <span

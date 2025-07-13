@@ -1,3 +1,15 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .home-container {
   font-family: 'Segoe UI', sans-serif;
   color: #333;
@@ -15,6 +27,7 @@
   color: white;
   text-align: center;
   position: relative;
+  padding: 0 15px;
 }
 
 .hero-content {
@@ -30,8 +43,8 @@
   margin: auto;
   backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
-
 
 @keyframes gradientFlow {
   0% { background-position: 0% 50%; }
@@ -53,8 +66,8 @@
   color: transparent;
   margin-bottom: 1rem;
   text-align: center;
+  transition: transform 0.3s ease;
 }
-
 
 .hero-content h1:hover {
   transform: scale(1.05);
@@ -67,8 +80,8 @@
   padding: 0.8rem 1.2rem;
   border-radius: 10px;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
-
 
 /* Buttons */
 .hero-buttons {
@@ -76,6 +89,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  width: 100%;
 }
 
 .hero-buttons .btn {
@@ -88,6 +102,10 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 120px;
 }
 
 .hero-buttons .btn:hover {
@@ -136,6 +154,8 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   padding: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
@@ -155,8 +175,9 @@
 .card img {
   height: 105px;
   margin-bottom: 20px;
-
   border: 2px solid #a2f4cc;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .card h3 {
@@ -180,4 +201,313 @@
   text-align: center;
   letter-spacing: 0.5px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* TABLET STYLES */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    padding: 0 20px;
+  }
+
+  .hero-content {
+    padding: 2rem 2.5rem;
+    max-width: 600px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .hero-buttons .btn {
+    min-width: 140px;
+  }
+
+  .features {
+    padding: 60px 25px;
+  }
+
+  .features h2 {
+    font-size: 2.3rem;
+  }
+
+  .feature-cards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .card img {
+    height: 90px;
+  }
+
+  .card h3 {
+    font-size: 1.35rem;
+  }
+
+  .card p {
+    font-size: 0.98rem;
+  }
+}
+
+/* SMALL TABLET / LARGE MOBILE */
+@media (min-width: 480px) and (max-width: 767px) {
+  .hero {
+    padding: 0 15px;
+  }
+
+  .hero-content {
+    padding: 1.8rem 2rem;
+    max-width: 500px;
+    border-radius: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 24px;
+  }
+
+  .features {
+    padding: 50px 20px;
+  }
+
+  .features h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 5px;
+  }
+
+  .card {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .card img {
+    height: 80px;
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* MOBILE STYLES */
+@media (max-width: 479px) {
+  .hero {
+    padding: 0 10px;
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    padding: 1.5rem 1.2rem;
+    max-width: 95%;
+    border-radius: 0.8rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .features {
+    padding: 40px 15px;
+  }
+
+  .features h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .features h2::after {
+    width: 40px;
+    height: 3px;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0;
+  }
+
+  .card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .card img {
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .footer {
+    padding: 15px;
+    font-size: 0.85rem;
+  }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 320px) {
+  .hero {
+    padding: 0 8px;
+  }
+
+  .hero-content {
+    padding: 1.2rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .hero-buttons .btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .features {
+    padding: 30px 10px;
+  }
+
+  .features h2 {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card img {
+    height: 60px;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+  }
+}
+
+/* LANDSCAPE MOBILE */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero {
+    padding: 20px 15px;
+  }
+
+  .hero-content {
+    padding: 1.5rem 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .hero-buttons .btn {
+    width: auto;
+    min-width: 120px;
+    padding: 8px 16px;
+  }
+}
+
+/* TOUCH DEVICE OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+  .hero-content:hover {
+    transform: none;
+  }
+
+  .hero-content h1:hover {
+    transform: none;
+  }
+
+  .hero-buttons .btn:hover {
+    transform: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  /* Add active states for touch */
+  .hero-buttons .btn:active {
+    transform: scale(0.95);
+  }
+
+  .card:active {
+    transform: scale(0.98);
+  }
 }

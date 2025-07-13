@@ -1,17 +1,45 @@
-/* Login.css */
 :root {
---primary-color: #8bc34a;      /* Fresh Green (like lettuce or herbs) */
---secondary-color: #ff9800;    /* Warm Orange (like ripe mango or spice) */
---error-color: #d32f2f;        /* Rich Tomato Red (natural red alert) */
---success-color: #4caf50;      /* Organic Green (trust, success) */
---text-color: #3e2723;         /* Dark Chocolate (warm & readable) */
---light-gray: #fef9f4;         /* Creamy White (food-safe, warm background) */
---medium-gray: #d7ccc8;        /* Light Cocoa (neutral card bg or borders) */
---dark-gray: #795548;          /* Coffee Brown (grounded tone for contrast) */
+--primary-color: #8bc34a;      
+--secondary-color: #ff9800;    
+--error-color: #d32f2f;     
+--success-color: #4caf50;     
+--text-color: #3e2723;         
+--light-gray: #fef9f4;        
+--medium-gray: #d7ccc8;       
+--dark-gray: #795548;          
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;  /* Full height */
+  background-color: #f7f9fb;  /* Optional subtle background */
+  padding: 1rem; /* Safe padding for small screens */
+}
+
+
+.register{
+  font-size: 0.9rem;
+}
+
+.register-link{
+  color: #007bff;
+  font-size: 0.9rem;
+}
+
+.forgot-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
 }
 
 .form-container {
-  max-width: 400px;
+  max-width: 500px;
   width: 90%;
   margin: 2rem auto;
   padding: 2rem;
@@ -186,6 +214,7 @@ p a:hover {
   p {
     font-size: 0.85rem;
   }
+  
 }
 
 @media (max-width: 480px) {

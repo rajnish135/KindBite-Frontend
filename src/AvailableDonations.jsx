@@ -5,6 +5,8 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-map
 import { setDonations } from '../store/donationSlice.js';
 import './styles/AvailableDonation.css';
 
+
+
 const containerStyle = {
   width: '100%',
   height: '500px',

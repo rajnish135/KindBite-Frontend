@@ -14,8 +14,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 100px;
-  padding: 0 24px;
+  height: 80px;
+  padding: 0 20px;
   background: rgba(20, 20, 20, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -29,38 +29,39 @@
 
 /* Logo */
 .navbar .logo h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   color: var(--navbar-accent-color);
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   transition: transform 0.3s ease;
   margin: 0;
 }
 
 .navbar .logo h2:hover {
-  transform: scale(1.1) rotate(-1deg);
+  transform: scale(1.05) rotate(-1deg);
 }
 
-/* Hamburger */
+/* Hamburger - Hidden by default on desktop */
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   cursor: pointer;
   z-index: 1001;
+  padding: 8px;
 }
 
 .menu-toggle .bar {
-  width: 28px;
-  height: 4px;
+  width: 24px;
+  height: 3px;
   background-color: var(--navbar-accent-color);
-  border-radius: 4px;
+  border-radius: 3px;
   transition: all 0.4s ease;
 }
 
 .menu-toggle.active .bar:nth-child(1) {
-  transform: rotate(45deg) translateY(10px);
+  transform: rotate(45deg) translateY(8px);
 }
 
 .menu-toggle.active .bar:nth-child(2) {
@@ -68,14 +69,14 @@
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-  transform: rotate(-45deg) translateY(-10px);
+  transform: rotate(-45deg) translateY(-8px);
 }
 
-/* Navigation links */
+/* Navigation links - Visible by default on desktop */
 .nav-links {
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 32px;
   list-style: none;
   align-items: center;
   margin: 0;
@@ -92,8 +93,8 @@
   text-decoration: none;
   color: var(--navbar-text-color);
   font-weight: 600;
-  font-size: 1.1rem;
-  padding: 8px 16px;
+  font-size: 1rem;
+  padding: 8px 14px;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
@@ -122,42 +123,171 @@
   transform: scale(0.95);
 }
 
-/* Responsive Navigation */
+/* Tablet Responsive */
+@media (max-width: 968px) {
+  .navbar {
+    padding: 0 16px;
+  }
+  
+  .nav-links {
+    gap: 24px;
+  }
+  
+  .nav-links li a {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+  }
+  
+  /* Keep hamburger hidden on tablet */
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
+  .navbar {
+    height: 64px;
+    padding: 0 16px;
+  }
+  
+  .navbar .logo h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Show hamburger menu only on mobile */
   .menu-toggle {
     display: flex;
   }
-
+  
+  /* Hide navigation links by default on mobile */
   .nav-links {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(145deg, var(--navbar-primary-color), var(--navbar-secondary-color));
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    padding: 20px 0;
+    padding: 0 12px;
     box-shadow: 0 10px 25px var(--navbar-shadow-color);
     backdrop-filter: var(--navbar-blur);
+    gap: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
   }
-
+  
   .nav-links.active {
     display: flex;
+    max-height: 120px; 
+    padding: 12px;
   }
-
+  
   .nav-links li {
-    margin: 10px 0;
+    margin: 0;
     text-align: center;
+    flex: 0 0 auto;
   }
-
-  .navbar .logo h2 {
-    font-size: 1.8rem;
+  
+  .nav-links li a {
+    display: block;
+    padding: 8px 12px; 
+    font-size: 0.9rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    min-width: 70px;
+    margin: 2px;
   }
-
-  .navbar {
-    height: auto;
-    padding: 16px;
+  
+  .nav-links li a:hover {
+    background: rgba(255, 255, 255, 0.2);
   }
 }
 
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .navbar {
+    height: 56px;
+    padding: 0 12px;
+  }
+  
+  .navbar .logo h2 {
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .menu-toggle {
+    padding: 6px;
+  }
+  
+  .menu-toggle .bar {
+    width: 20px;
+    height: 2.5px;
+  }
+  
+  .nav-links {
+    padding: 0 8px;
+    gap: 6px;
+  }
+  
+  .nav-links.active {
+    max-height: 100px; 
+    padding: 10px 8px; 
+  }
+  
+  .nav-links li a {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    min-width: 65px;
+    margin: 2px;
+  }
+}
 
+/* Extra Small Devices */
+@media (max-width: 320px) {
+  .navbar {
+    height: 52px;
+    padding: 0 10px;
+  }
+  
+  .navbar .logo h2 {
+    font-size: 1.2rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .menu-toggle .bar {
+    width: 18px;
+    height: 2px;
+  }
+  
+  .nav-links {
+    padding: 0 6px;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links.active {
+    max-height: 90px;
+    padding: 8px 6px; 
+  }
+  
+  .nav-links li a {
+    padding: 6px 8px; 
+    font-size: 0.8rem;
+    min-width: 60px;
+    margin: 2px;
+  }
+}
+
+/* For ensuring all links are visible */
+@media (max-width: 768px) {
+  .nav-links li:last-child {
+    margin-bottom: 0;
+  }
+}

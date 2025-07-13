@@ -22,7 +22,8 @@ const AdminDashboard = () => {
 
 
       dispatch(setDonations(res.data.donations));
-    } catch (err) {
+    } 
+    catch (err) {
       console.error('Error fetching admin donations:', err);
     }
   };
@@ -93,6 +94,39 @@ const isStale = (createdAt, status) => {
 
   };
 
+  const handleSuspendUser = async (userId, currentStatus) => {
+  const token = localStorage.getItem('token');
+
+  const confirmed = window.confirm(
+    `Are you sure you want to ${currentStatus ? 'unsuspend' : 'suspend'} this user?`
+  );
+
+  if (!confirmed) 
+  return;
+
+  try {
+
+    await axios.patch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/admin/suspend-user/${userId}`,
+      { suspend: !currentStatus },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    alert(`User ${!currentStatus ? 'suspended' : 'unsuspended'} successfully.`);
+    fetchDonations(); // Refresh list if needed
+
+  } 
+  catch (err) {
+    console.error('Failed to update suspension status:', err);
+    alert('Something went wrong');
+  }
+};
+
+
   return (
     <div className="admin-dashboard">
       <h2 className="admin-title">All Donations</h2>
@@ -112,12 +146,12 @@ const isStale = (createdAt, status) => {
             
             <div style={{ margin: '1rem 0' }}>
 
-              <button onClick={handleDeleteStale} disabled={loading}>
-                🗑️ Delete All Stale Food Items
+              <button className='stale-all stale-delete-btn' onClick={handleDeleteStale} disabled={loading}>
+                Delete All Stale Food Items
               </button>
-
-              <p style={{ fontSize: '0.85rem', color: 'gray' }}>
-                This will only remove food donations older than 24 hours and not claimed.
+               
+              <p style={{ marginLeft:'2rem', marginTop:'-0.1px' ,fontSize: '0.85rem', color: 'gray', textAlign: 'left' }}>
+               NOTE: This will only remove food donations older than 24 hours and not claimed.
               </p>
 
             </div>
@@ -131,7 +165,8 @@ const isStale = (createdAt, status) => {
         <p style={{ color: 'red' }}>{error}</p>
       ) : (
         <div className="donation-cards">
-          {filtered.map((donation) => (
+          {
+            filtered.map((donation) => (
             <div key={donation._id} className={`donation-card ${donation.status}`}>
               <img
                 src={donation?.image}
@@ -144,6 +179,23 @@ const isStale = (createdAt, status) => {
               <p><strong>Status:</strong> {donation.status}</p>
               <p><strong>Donor:</strong> {donation.donor?.username}</p>
               <p><strong>Receiver:</strong> {donation.receiver?.username || 'Not claimed yet'}</p>
+              
+              <p><strong>Donated At:</strong> {donation.createdAt ? 
+              `${new Date(donation.createdAt).toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              })}, ${new Date(donation.createdAt).toLocaleTimeString('en-IN', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+              })}` : "N/A"}
+             </p>
+
+             <p><strong>Pickup Time:</strong> {donation.availableTime || "N/A"}</p>
+
+             <p><strong>Donor Email:</strong> {donation.donor?.email || "N/A"}</p>
+             <p><strong>Reciever Email:</strong> {donation.receiver?.email || "N/A"}</p>
 
               {donation?.location?.coordinates ? (
                 <p>
@@ -168,15 +220,51 @@ const isStale = (createdAt, status) => {
             }
 
               {isStale(donation.createdAt, donation.status) && (
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeleteSingle(donation._id)}
-                >
-                  ❌ Delete This Stale Item
-                </button>
+                <div className="stale-single">
+                   <button className=".stale-single stale-delete-btn" onClick={() => handleDeleteSingle(donation._id)}>
+                        Delete This Stale Item
+                   </button>
+                </div>
+               
               )}
+
+            
+            {/* Donor Suspension Control */}
+             {donation.donor && (
+                <p>
+                  <strong>Donor Actions:</strong>{' '}
+                  <button
+                    className={`suspend-btn ${donation.donor?.isSuspended ? 'suspended' : ''}`}
+                    onClick={() =>
+                      handleSuspendUser(donation.donor._id, donation.donor.isSuspended)
+                    }
+                  >
+                    {donation.donor.isSuspended ? '🔓 Unsuspend' : '🚫 Suspend'} Donor
+                  </button>
+                </p>
+             )}
+
+
+              {/* Receiver Suspension Control */}
+             {donation.receiver && (
+              
+                  <p><strong>Receiver Actions:</strong>
+                  <button
+                    className={`suspend-btn ${donation.receiver?.isSuspended ? 'suspended' : ''}`}
+                    onClick={() =>
+                      handleSuspendUser(donation.receiver._id, donation.receiver.isSuspended)
+                    }
+                  >
+                    {donation.receiver.isSuspended ? '🔓 Unsuspend' : '🚫 Suspend'} Receiver
+                  </button>
+                  </p>
+             
+              )}
+
             </div>
-          ))}
+          ))
+               
+          }
         </div>
       )}
     </div>

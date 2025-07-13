@@ -2,27 +2,45 @@
   import { useDispatch, useSelector } from 'react-redux';
   import { logout} from '../store/AuthSlice.js';
 
-  import Navbar from './Navbar';
-  import Home from './Home';
-  import Login from './Login';
-  import Register from './Register';
-  import AllDonations from './AllDonations';
-  import Donate from './Donate';
-  import Profile from './Profile';
-  import MyDonations from './MyDonations';
+  import Navbar from './Navbar.jsx';
+  import Home from './Home.jsx';
+  import Login from './Login.jsx';
+  import Register from './Register.jsx';
+  import AllDonations from './AllDonations.jsx';
+  import Donate from './Donate.jsx';
+  import Profile from './Profile.jsx';
+  import MyDonations from './MyDonations.jsx';
   import './styles/App.css';
   import AvailableDonations from './AvailableDonations.jsx';
   import SubmitReview from './SubmitReviews.jsx';
   import ReceiverReviews from './ReceiverReviews.jsx';
   import AdminDashboard from './AdminDashboard.jsx';
   import DonorFAQs from './DonorFAQs.jsx';
-import ReceiverFAQs from './ReceiverFAQs.jsx';
+  import ReceiverFAQs from './ReceiverFAQs.jsx';
+  import ForgotPassword from './ForgotPassword.jsx';
+  import ResetPassword from './ResetPassword.jsx';
+
+  import { useEffect } from 'react';
+  import { socket } from './socket.js';
+import AdminFAQs from './AdminFAQs.jsx';
 
   const ProtectedRoute = ({ isAuthenticated, children }) => {
     return isAuthenticated ? children : <Navigate to="/login" replace />;
   };
 
   function App() {
+
+  useEffect(() => {
+      const token = localStorage.getItem('token');
+
+      if (token && !socket.connected) {
+        console.log("🔁 Reconnecting socket after refresh...");
+        socket.auth.token = token;
+        socket.connect();
+      }
+
+  }, []);
+
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -53,11 +71,15 @@ import ReceiverFAQs from './ReceiverFAQs.jsx';
               }
               
               {
-                role === 'donor' && role !== 'admim' ? (
-                    <li><Link to="/donorFAQs">FAQs</Link></li>
-                ) : (
-                  <li><Link to="/receiverFAQs">FAQs</Link></li>
-                )
+                role === 'donor' && <li><Link to="/donorFAQs">FAQs</Link></li>
+              }
+
+              {
+                role === 'receiver' && <li><Link to="/receiverFAQs">FAQs</Link></li>
+              }  
+
+              {
+                role === 'admin' && <li><Link to="/adminFAQs">FAQs</Link></li>
               }           
 
               <li><Link to="/profile">Profile</Link></li>
@@ -88,7 +110,9 @@ import ReceiverFAQs from './ReceiverFAQs.jsx';
         )}
 
         <Routes>
+  
           <Route path="/login" element={<Login />} />
+
           <Route path="/registerUser" element={<Register />} />
 
           <Route path="/" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Home /></ProtectedRoute>} />
@@ -98,6 +122,8 @@ import ReceiverFAQs from './ReceiverFAQs.jsx';
           <Route path="/donorFAQs" element={<ProtectedRoute isAuthenticated={isAuthenticated}>< DonorFAQs/></ProtectedRoute>} />
 
           <Route path="/receiverFAQs" element={<ProtectedRoute isAuthenticated={isAuthenticated}>< ReceiverFAQs/></ProtectedRoute>} />
+
+          <Route path="/adminFAQs" element={<ProtectedRoute isAuthenticated={isAuthenticated}>< AdminFAQs/></ProtectedRoute>} />
           
           <Route path="/donate" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Donate /></ProtectedRoute>} />
           
@@ -128,6 +154,11 @@ import ReceiverFAQs from './ReceiverFAQs.jsx';
           <Route path="/admin/donations" element={<AdminDashboard />} />
 
           <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
+
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+
         </Routes>
       </div>
     );

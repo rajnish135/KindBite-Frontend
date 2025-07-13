@@ -11,8 +11,8 @@ const FAQs = () => {
       answer: "Yes, adding a photo helps receivers understand what’s being offered and builds trust. It also improves visibility of your donation.",
     },
     {
-      question: "What happens if no one claims my donation?",
-      answer: "It will auto-expire after 24 hours.",
+    question: "What happens if no one claims my donation?",
+    answer: "If a donation isn't claimed within a safe window (e.g., 24 hours), it will be flagged as 'Might be stale' and deleted by the admin.",
     },
     {
       question: "Can I track how many donations I’ve made?",
@@ -20,7 +20,7 @@ const FAQs = () => {
     },
     {
       question: "Is my personal information shared with others?",
-      answer: "Only basic contact info (like phone or email) is shared with the receiver after a claim — never publicly.",
+      answer: "Only your email is shared with the admin — never publicly.",
     },
     {
       question: "What kind of food can I donate?",

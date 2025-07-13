@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Profile.css';
 import axios from 'axios';
+import { logout} from '../store/AuthSlice.js';
+import { useDispatch} from 'react-redux';
 
-const Profile = ({onLogout }) => {
+const Profile = () => {
+
   const [username, setUsername] = useState('');
   const [foodData, setFoodData] = useState([]);
   const [message, setMessage] = useState(null);
+
   const role = localStorage.getItem('role');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
+
     const fetchUserDetails = async () => {
+
       try {
         const token = localStorage.getItem("token") || "";
 
@@ -29,8 +36,6 @@ const Profile = ({onLogout }) => {
         console.log("Logged in UserDetails: ", res1.data);
         setUsername(res1.data.data.username);
 
-        // console.log("AFTER REQ");
-
         const res2 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/donations`, config);
      
         console.log("Fetch Logged in User donated food",res2.data.data);
@@ -41,17 +46,19 @@ const Profile = ({onLogout }) => {
         console.log("Error fetching user details:", err);
         setMessage({ text: 'Failed to load profile information.' });
       }
+
     };
 
     fetchUserDetails();
+    
   }, []);
 
   const handleLogout = () => {
-    console.log('Profile: Logging out');
-    localStorage.removeItem('token');
-    onLogout();
-    navigate('/login');
-  };
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      dispatch(logout());
+      navigate('/login');
+    };
 
 
   return (

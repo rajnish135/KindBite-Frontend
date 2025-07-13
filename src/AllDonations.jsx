@@ -127,7 +127,11 @@ console.log("Logged-in userId:", userId);
           <p className="error-message">{error}</p>
         ) : visibleDonations?.length > 0 && (role === 'admin' || role === 'receiver') ? (
           
-          visibleDonations.map((donation) => (
+          visibleDonations.map((donation) => {
+
+            console.log("💾 Donations list from Redux:", visibleDonations);
+
+            return(
 
             <div className="donation-card" key={donation._id}>
 
@@ -140,6 +144,21 @@ console.log("Logged-in userId:", userId);
               <h3>{donation?.foodDetails || "Unknown Food Item"}</h3>
               <p><strong>Donor:</strong> {donation.name || "Anonymous"}</p>
               <p><strong>Quantity:</strong> {donation.quantity || "N/A"}</p>
+              <p><strong>Donated At:</strong> {donation.createdAt ? 
+              `${new Date(donation.createdAt).toLocaleDateString('en-IN', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              })}, ${new Date(donation.createdAt).toLocaleTimeString('en-IN', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+              })}` : "N/A"}
+             </p>
+
+
+
+              <p><strong>Pickup Time:</strong> {donation.availableTime || "N/A"}</p>
 
               {donation?.location?.coordinates ? (
                 <p>
@@ -207,16 +226,19 @@ console.log("Logged-in userId:", userId);
                  {
                     donation.status === 'picked' &&
                     !donation.reviewed && ( 
+                     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                       <Link to={`/submitReview/${donation._id}`}>
-                        <button>Leave a Review</button>
+                        <button className="leave-review-btn">📝 Leave a Review</button>
                       </Link>
-                    )
+                    </div>
+                    ) 
                   }
 
                 </div>
               )}
             </div>
-          ))
+           )
+        } )
         ) : (
           <p>No donations found.</p>
         )}

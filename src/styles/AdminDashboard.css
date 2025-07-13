@@ -1,3 +1,5 @@
+[media pointer="file-service://file-3pxdRNsZD3zrWmJijTVLj5"]
+[media pointer="file-service://file-YCMDGvfR9xmtagB5ZDVj2g"]
 /* Container styling */
 .admin-dashboard {
   padding: 2rem;
@@ -130,3 +132,78 @@
   background: linear-gradient(135deg, #ffe0e0, #ffffff);
   border-left: 6px solid #e74c3c;
 }
+
+/* Delete (Bold Red) */
+.stale-delete-btn {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  display: block;
+  margin: 0 auto; /* center button */
+}
+
+.stale-all{
+  display: inline-block;  
+  margin-left: 2rem;              
+}
+
+.stale-delete-btn:hover {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(192, 57, 43, 0.4);
+}
+
+.stale-delete-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.2);
+}
+
+.stale-single {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Green (default state) */
+.suspend-btn {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.suspend-btn:hover {
+  background: linear-gradient(135deg, #1e8449, #28b463);
+  transform: scale(1.05);
+}
+
+.suspend-btn:active {
+  transform: scale(1);
+}
+
+/* Red (when user is already suspended) */
+.suspend-btn.suspended {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.suspend-btn.suspended:hover {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+  box-shadow: 0 6px 16px rgba(192, 57, 43, 0.3);
+} 
