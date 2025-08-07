@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
   margin-right: 16px;
-  z-index: 1100;
+  z-index: 10000;
 }
 
 .notification-bell {
@@ -63,7 +63,7 @@
   border: 1px solid #4a5568;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  z-index: 1100;
+  z-index: 3000;
   animation: slideDown 0.3s ease-out;
   overflow: hidden;
 }
@@ -136,3 +136,60 @@
   color: #a0aec0;
   font-size: 14px;
 }
+
+@media (max-width: 600px) {
+  .notification-bell {
+    font-size: 20px;
+    padding: 6px;
+  }
+
+  .notification-dropdown {
+    width: 90vw;
+    top: 100%; /* Position right below bell */
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+
+  .dropdown-header h4 {
+    font-size: 14px;
+  }
+
+  .notification-item {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .badge {
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    padding: 1px 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .notification-bell {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  .notification-dropdown {
+    width: 90vw;
+    right: 4%;
+    top: 100%;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .notification-dropdown {
+    width: 90vw;
+    right: 0;
+    left: auto;
+    top: 100%;
+    transform: none;
+    z-index: 3000;
+  }
+}
+

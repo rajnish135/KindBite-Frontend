@@ -24,6 +24,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+  overflow: visible;
   transition: background 0.4s ease;
 }
 
@@ -123,6 +124,17 @@
   transform: scale(0.95);
 }
 
+
+.notification-container {
+  position: relative;
+  z-index: 2000;
+  margin-left: auto;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+
 /* Tablet Responsive */
 @media (max-width: 968px) {
   .navbar {
@@ -143,6 +155,8 @@
     display: none;
   }
 }
+
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

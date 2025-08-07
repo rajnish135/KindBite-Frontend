@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-// import ReCAPTCHA from 'react-google-recaptcha';
 import './styles/Login.css';
 
 import { useDispatch } from 'react-redux';
@@ -12,8 +11,9 @@ import { socket } from './socket.js';
 const Login = ({isAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const [captchaToken, setCaptchaToken] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -22,47 +22,91 @@ const Login = ({isAuthenticated }) => {
     return <Navigate to="/" replace />;
   }
 
-  const handleLogin = async (e) => {
+  // const handleLogin = async (e) => {
     
-    e.preventDefault();
-    try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
-        username,
-        password,
-        // captchaToken,
-      });
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
+  //       username,
+  //       password,
+  //     });
 
-      const token = response.data.token;
-      const role = response.data.role;
-       const userId = response.data.userId;
+  //     const token = response.data.token;
+  //     const role = response.data.role;
+  //      const userId = response.data.userId;
 
-      console.log("ROLE",role);
+  //     console.log("ROLE",role);
       
-      localStorage.setItem('token', token);
-      localStorage.setItem('role', role); 
-      localStorage.setItem('userId', userId);
+  //     localStorage.setItem('token', token);
+  //     localStorage.setItem('role', role); 
+  //     localStorage.setItem('userId', userId);
 
-      // ✅ Dispatch Redux login action
-      dispatch(login({
-        user: { username, role }, // You can expand this object if needed
-        token,
-      }));
+  //     // ✅ Dispatch Redux login action
+  //     dispatch(login({
+  //       user: { username, role }, // You can expand this object if needed
+  //       token,
+  //     }));
 
-      // ✅ Configure and connect socket after login
-      socket.auth.token = token; // set token in auth
-      socket.connect();          // now connect socket manually
+  //     // ✅ Configure and connect socket after login
+  //     socket.auth.token = token; // set token in auth
+  //     socket.connect();          // now connect socket manually
 
-      setMessage({ type: 'success', text: 'Login successful!' });
+  //     setMessage({ type: 'success', text: 'Login successful!' });
 
-      navigate('/');
-    } 
-    catch (error) {
-      setMessage({
-        type: 'error',
-        text: error.response?.data?.message || 'Invalid credentials. Please try again.',
-      });
-    }
-  };
+  //     navigate('/');
+  //   } 
+  //   catch (error)
+  //   {
+  //     setMessage({
+  //       type: 'error',
+  //       text: error.response?.data?.message || 'Invalid credentials. Please try again.',
+  //     });
+  //   }
+  // };
+
+ const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true); // Start loading
+
+  try {
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
+      username,
+      password,
+      // captchaToken,
+    });
+
+    const token = response.data.token;
+    const role = response.data.role;
+    const userId = response.data.userId;
+
+    localStorage.setItem('token', token);
+    localStorage.setItem('role', role);
+    localStorage.setItem('userId', userId);
+
+    dispatch(login({
+      user: { username, role },
+      token,
+    }));
+
+    socket.auth.token = token;
+    socket.connect();
+
+    setMessage({ type: 'success', text: 'Login successful!' });
+
+    navigate('/');
+  } 
+  catch (error) 
+  {
+    setMessage({
+      type: 'error',
+      text: error.response?.data?.message || 'Invalid credentials. Please try again.',
+    });
+  } 
+  finally {
+    setLoading(false); // End loading
+  }
+};
+
 
   return (
   <div className="form-wrapper">
@@ -90,13 +134,16 @@ const Login = ({isAuthenticated }) => {
           />
         </div>
 
-        {/* <ReCAPTCHA
-          sitekey="6LcE8jQrAAAAAAoBOIdjX3zrQLjDyU5xgvpoSqDH"
-          onChange={setCaptchaToken}
-        /> */}
-
-        <button type="submit" className="submit-btn">Login</button>
-
+        <button type="submit" className="submit-btn" disabled={loading}>
+          {loading ? (
+            <>
+              <span className="spinner"></span> Logging in...
+            </>
+          ) : (
+            'Login'
+          )}
+        </button>
+        
       </form>
 
       {message && (
