@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './styles/Profile.css';
+import './style.css';
 import axios from 'axios';
-import { logout} from '../store/AuthSlice.js';
+import { logout} from '../../store/AuthSlice.js';
 import { useDispatch} from 'react-redux';
 
 const Profile = () => {

@@ -1,4 +1,4 @@
-import './styles/DonorFAQs.css'
+import './style.css';
 
 const AdminFAQs = () => {
   const faqList = [

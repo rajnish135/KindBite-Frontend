@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import './styles/AllDonations.css';
+import './style.css';
 import axios from 'axios';
-import { setDonations, setLoading, setError } from '../store/donationSlice';
-import { socket } from './socket.js';
-import { getFreshness } from './helperFunctions/getFreshness.js';
+import { setDonations, setLoading, setError } from '../../store/donationSlice.js';
+import { socket } from '../socket.js';
+import { getFreshness } from '../helperFunctions/getFreshness.js';
 
 const AllDonations = () => {
   

@@ -1,3 +1,5 @@
+import './ReceiverFAQs.css';
+
 const ReceiverFAQs = () => {
   const faqs = [
     {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDonations } from '../store/donationSlice.js';
-import { getFreshness } from './helperFunctions/getFreshness.js';
-import './styles/AdminDashboard.css';
+import { setDonations } from '../../store/donationSlice.js';
+import { getFreshness } from '../helperFunctions/getFreshness.js';
+import './style.css';
 import axios from 'axios';
 
 const AdminDashboard = () => {

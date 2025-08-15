@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './styles/Navbar.css';
-import NotificationBell from './NotificationBell.jsx';
+import './style.css';
+import NotificationBell from '../NotificationBell/index.jsx';
 
 const Navbar = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

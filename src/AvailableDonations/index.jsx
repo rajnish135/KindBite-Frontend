@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
-import { setDonations } from '../store/donationSlice.js';
-import './styles/AvailableDonation.css';
+import { setDonations } from '../../store/donationSlice.js';
+import './style.css';
 
 
 

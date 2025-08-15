@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import './styles/MyDonations.css';
+import './style.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setDonations,
   setLoading,
   setError,
-} from '../store/donationSlice';
+} from '../../store/donationSlice';
 
 const MyDonations = () => {
   const donations = useSelector((state) => state.donations.list);

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import './styles/Home.css';
-import img1 from '../public/food-donation.avif'
-import img2 from '../public/distribution.avif'
-import img3 from '../public/img3.avif'
+import './style.css';
+import img1 from '../../public/food-donation.avif';
+import img2 from '../../public/distribution.avif';
+import img3 from '../../public/img3.avif';
 
 const Home = () => {
 

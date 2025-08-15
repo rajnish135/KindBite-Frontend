@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './styles/SubmitReview.css'; 
+import './style.css';
 
 const SubmitReview = () => {
   const [rating, setRating] = useState(5);

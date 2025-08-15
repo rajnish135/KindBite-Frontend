@@ -1,28 +1,28 @@
   import { Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom';
   import { useDispatch, useSelector } from 'react-redux';
-  import { logout} from '../store/AuthSlice.js';
+  import { logout} from '../../store/AuthSlice.js';
 
-  import Navbar from './Navbar.jsx';
-  import Home from './Home.jsx';
-  import Login from './Login.jsx';
-  import Register from './Register.jsx';
-  import AllDonations from './AllDonations.jsx';
-  import Donate from './Donate.jsx';
-  import Profile from './Profile.jsx';
-  import MyDonations from './MyDonations.jsx';
-  import './styles/App.css';
-  import AvailableDonations from './AvailableDonations.jsx';
-  import SubmitReview from './SubmitReviews.jsx';
-  import ReceiverReviews from './ReceiverReviews.jsx';
-  import AdminDashboard from './AdminDashboard.jsx';
-  import DonorFAQs from './DonorFAQs.jsx';
-  import ReceiverFAQs from './ReceiverFAQs.jsx';
-  import ForgotPassword from './ForgotPassword.jsx';
-  import ResetPassword from './ResetPassword.jsx';
+  import Navbar from '../Navbar';
+  import Home from '../Home';
+  import Login from '../Login';
+  import Register from '../Register';
+  import AllDonations from '../AllDonations';
+  import Donate from '../Donate';
+  import Profile from '../Profile';
+  import DonorDonations from '../DonorDonations';
+  import './style.css';
+  import AvailableDonations from '../AvailableDonations';
+  import DonorReview from '../DonorReview';
+  import ReceiverReviews from '../RecieverReview';
+  import AdminDashboard from '../AdminDashboard';
+  import DonorFAQs from '../FAQs/DonorFAQs.jsx';
+  import ReceiverFAQs from '../FAQs/ReceiverFAQs.jsx';
+  import ForgotPassword from '../ForgotPassword';
+  import ResetPassword from '../ResetPassword';
 
   import { useEffect } from 'react';
-  import { socket } from './socket.js';
-import AdminFAQs from './AdminFAQs.jsx';
+  import { socket } from '../socket.js';
+import AdminFAQs from '../FAQs/AdminFAQs.jsx';
 
   const ProtectedRoute = ({ isAuthenticated, children }) => {
     return isAuthenticated ? children : <Navigate to="/login" replace />;
@@ -127,7 +127,7 @@ import AdminFAQs from './AdminFAQs.jsx';
           
           <Route path="/donate" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Donate /></ProtectedRoute>} />
           
-          <Route path="/myDonations" element={<ProtectedRoute isAuthenticated={isAuthenticated}><MyDonations /></ProtectedRoute>} />
+          <Route path="/myDonations" element={<ProtectedRoute isAuthenticated={isAuthenticated}><DonorDonations /></ProtectedRoute>} />
           
           <Route path="/availableDonations" element={<ProtectedRoute isAuthenticated={isAuthenticated}><AvailableDonations /></ProtectedRoute>} />
           
@@ -137,7 +137,7 @@ import AdminFAQs from './AdminFAQs.jsx';
             path="/submitReview/:donationId"
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <SubmitReview/>
+                <DonorReview/>
               </ProtectedRoute>
             }
           />

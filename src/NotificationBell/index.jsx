@@ -4,8 +4,8 @@ import axios from 'axios';
 import {
   setNotifications,
   markAllAsRead,
-} from '../store/notificationSlice.js';
-import './styles/NotificationBell.css';
+} from '../../store/notificationSlice.js';
+import './style.css';
 
 export default function NotificationBell() {
   const dispatch = useDispatch();
