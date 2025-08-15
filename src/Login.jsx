@@ -22,51 +22,9 @@ const Login = ({isAuthenticated }) => {
     return <Navigate to="/" replace />;
   }
 
-  // const handleLogin = async (e) => {
-    
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
-  //       username,
-  //       password,
-  //     });
-
-  //     const token = response.data.token;
-  //     const role = response.data.role;
-  //      const userId = response.data.userId;
-
-  //     console.log("ROLE",role);
-      
-  //     localStorage.setItem('token', token);
-  //     localStorage.setItem('role', role); 
-  //     localStorage.setItem('userId', userId);
-
-  //     // ✅ Dispatch Redux login action
-  //     dispatch(login({
-  //       user: { username, role }, // You can expand this object if needed
-  //       token,
-  //     }));
-
-  //     // ✅ Configure and connect socket after login
-  //     socket.auth.token = token; // set token in auth
-  //     socket.connect();          // now connect socket manually
-
-  //     setMessage({ type: 'success', text: 'Login successful!' });
-
-  //     navigate('/');
-  //   } 
-  //   catch (error)
-  //   {
-  //     setMessage({
-  //       type: 'error',
-  //       text: error.response?.data?.message || 'Invalid credentials. Please try again.',
-  //     });
-  //   }
-  // };
-
  const handleLogin = async (e) => {
   e.preventDefault();
-  setLoading(true); // Start loading
+  setLoading(true); 
 
   try {
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
