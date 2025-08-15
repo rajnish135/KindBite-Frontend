@@ -1,20 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap');
 
 /* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Urbanist', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
 
 /* Page container - Mobile First */
 .donations-container {
