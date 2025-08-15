@@ -10,7 +10,7 @@
   import Donate from './Donate.jsx';
   import Profile from './Profile.jsx';
   import MyDonations from './MyDonations.jsx';
-  import './App.css';
+  import './styles/App.css';
   import AvailableDonations from './AvailableDonations.jsx';
   import SubmitReview from './SubmitReviews.jsx';
   import ReceiverReviews from './ReceiverReviews.jsx';

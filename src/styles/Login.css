@@ -177,7 +177,7 @@ p a:hover {
   text-decoration: underline;
 }
 
-.spinner {
+/* .spinner {
   width: 16px;
   height: 16px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -193,7 +193,7 @@ p a:hover {
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 
 @media (max-width: 768px) {
@@ -247,3 +247,4 @@ p a:hover {
     padding: 0.6rem;
   }
 
+}
