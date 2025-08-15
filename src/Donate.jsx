@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import './styles/App.css';
 import './styles/Donate.css';
 
 const containerStyle = {
