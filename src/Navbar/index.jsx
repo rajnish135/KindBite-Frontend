@@ -3,6 +3,7 @@ import './style.css';
 import NotificationBell from '../NotificationBell/index.jsx';
 
 const Navbar = ({ children }) => {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const role = localStorage.getItem('role');
 
@@ -23,12 +24,6 @@ const Navbar = ({ children }) => {
               <h2 className="logo-animate">KindBite – Waste Less, Feed More</h2>
             </div>
 
-            {(role === 'admin' || role === 'receiver') && (
-              <div className="notification-container">
-                <NotificationBell />
-              </div>
-            )}
-
             <div
               className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
               onClick={toggleMenu}
@@ -39,7 +34,15 @@ const Navbar = ({ children }) => {
             </div>
 
             <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+              
               {children}
+
+              {(role === 'admin' || role === 'receiver') && (
+              <div className="notification-container">
+                <NotificationBell />
+              </div>
+              )}
+
             </ul>
 
       </nav>
