@@ -7,7 +7,7 @@ import { setDonations, setLoading, setError } from '../../store/donationSlice.js
 import { socket } from '../socket.js';
 import { getFreshness } from '../helperFunctions/getFreshness.js';
 
-const AllDonations = () => {
+export default function AllDonations() {
   
   const dispatch = useDispatch();
 
@@ -187,8 +187,9 @@ console.log("Logged-in userId:", userId);
 
             {
             donation.status === 'available' && (
-              <p><strong>Freshness:</strong> {getFreshness(donation.createdAt)}</p>
+              <p><strong>Freshness:</strong> {getFreshness(donation.expiryAt)}</p>
               )
+
             }
               
             {
@@ -219,7 +220,7 @@ console.log("Logged-in userId:", userId);
                       className="mark-received-btn"
                       onClick={() => markAsReceived(donation._id)}
                     >
-                      ✅ Mark as Received
+                      Mark as Received
                     </button>
                   )}
 
@@ -247,5 +248,3 @@ console.log("Logged-in userId:", userId);
     </div>
   );
 };
-
-export default AllDonations; 

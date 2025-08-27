@@ -77,6 +77,28 @@
   color: #636e72;
 }
 
+
+.delete-btn {
+  width: 100%;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 8px 15px rgba(255, 0, 0, 0.2);
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(255, 0, 0, 0.4);
+  background: linear-gradient(to right, #e53935, #d32f2f);
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .donations-table {

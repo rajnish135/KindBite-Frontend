@@ -19,6 +19,8 @@
   import ReceiverFAQs from '../FAQs/ReceiverFAQs.jsx';
   import ForgotPassword from '../ForgotPassword';
   import ResetPassword from '../ResetPassword';
+  import Chatbot from '../Chatbot'; 
+
 
   import { useEffect } from 'react';
   import { socket } from '../socket.js';
@@ -28,7 +30,7 @@ import AdminFAQs from '../FAQs/AdminFAQs.jsx';
     return isAuthenticated ? children : <Navigate to="/login" replace />;
   };
 
-  function App() {
+export default function App() {
 
   useEffect(() => {
       const token = localStorage.getItem('token');
@@ -160,8 +162,9 @@ import AdminFAQs from '../FAQs/AdminFAQs.jsx';
           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         </Routes>
+
+         {isAuthenticated && <Chatbot />}
+         
       </div>
     );
   }
-
-  export default App;

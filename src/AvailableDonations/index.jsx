@@ -20,9 +20,9 @@ const center = {
   lng: 77.2090,
 };
 
-const AvailableDonations = () => {
+export default function AvailableDonations(){
   const dispatch = useDispatch();
-  const donations = useSelector((state) => state.donations.list); // 🔥 from Redux store
+  const donations = useSelector((state) => state.donations.list); //  from Redux store
   const [selected, setSelected] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
@@ -100,4 +100,4 @@ const AvailableDonations = () => {
   );
 };
 
-export default AvailableDonations;
+

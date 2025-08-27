@@ -1,15 +1,7 @@
-  export const getFreshness = (createdAt) => {
-
-    const now = new Date();
-    const donatedTime = new Date(createdAt);
-    const diffHours = Math.floor((now - donatedTime) / (1000 * 60 * 60));
-
-    if (diffHours < 1) 
-    return '🟢 Fresh (less than 1 hour ago)';
-
-    if (diffHours < 24) 
-    return '🟡 A few hours old';
+export const getFreshness = (expiryAt) => {
+  const now = new Date();
+  const expiryDate = new Date(expiryAt); // <- ensures it's a Date object
   
-    return '🔴 Might be stale';
-    
-  }
+  return now < expiryDate ? '🟢 Fresh' : '🔴 Stale';
+
+};

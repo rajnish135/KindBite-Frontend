@@ -51,14 +51,17 @@ const Login = ({ isAuthenticated }) => {
 
       setMessage({ type: 'success', text: 'Login successful!' });
       navigate('/');
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       setMessage({
         type: 'error',
         text:
           error.response?.data?.message ||
           'Invalid credentials. Please try again.',
       });
-    } finally {
+    } 
+    finally {
       setLoading(false); // ✅ Hide loading after response
     }
   };

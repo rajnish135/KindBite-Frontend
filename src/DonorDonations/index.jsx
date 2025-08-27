@@ -120,7 +120,7 @@ const MyDonations = () => {
 
                 {donation.status === 'available' && (
                   <button
-                    className="delete-button"
+                    className="delete-btn"
                     onClick={() => handleDelete(donation._id)}
                   >
                     Delete

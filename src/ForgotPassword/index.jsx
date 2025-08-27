@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/forgot-password`, {
@@ -43,7 +45,14 @@ const ForgotPassword = () => {
           />
         </div>
 
-        <button type="submit" className="forgot-submit-btn">Reset Password</button>
+       <button
+          type="submit"
+          className={`forgot-submit-btn ${loading ? 'loading' : ''}`}
+          disabled={loading}
+        >
+          {loading ? 'Resetting...' : 'Reset Password'}
+        </button>
+
       </form>
 
       {message && (
