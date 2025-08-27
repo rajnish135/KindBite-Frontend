@@ -19,7 +19,7 @@
   import ReceiverFAQs from '../FAQs/ReceiverFAQs.jsx';
   import ForgotPassword from '../ForgotPassword';
   import ResetPassword from '../ResetPassword';
-  import Chatbot from '../Chatbot'; 
+  import Chatbot from '../ChatBot'; 
 
 
   import { useEffect } from 'react';
