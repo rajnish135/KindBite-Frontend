@@ -3,7 +3,7 @@ import axios from "axios";
 export async function sendMessage(message, history) {
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/chat",
+      `${import.meta.env.VITE_BACKEND_UR}/api/chat`,
       { message, history },
       {
         headers: {

@@ -42,7 +42,7 @@ const handleSend = async () => {
     setMessages([...updatedHistory, { role: "model", content: "⚠️ Sorry, I couldn't answer right now." }]);
   }
   finally {
-      setIsSending(false); // ✅ unlock send button after reply
+      setIsSending(false); // unlock send button after reply
   }
 
   setInput("");
