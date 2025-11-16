@@ -8,10 +8,10 @@ export const socket = io(import.meta.env.VITE_BACKEND_URL, {
     token: null, // set after login
   },
   
-  transports: ['websocket'],
+  transports: ["websocket", "polling"] // default
 
 });
 
 socket.on('connect_error', (err) => {
-  console.error('❌ Socket connect error:', err.message);
+  console.error('Socket connect error:', err.message);
 });

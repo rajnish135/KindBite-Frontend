@@ -39,7 +39,8 @@ const handleSend = async () => {
   } 
   catch (error) {
     console.error("Chatbot error:", error);
-    setMessages([...updatedHistory, { role: "model", content: "⚠️ Sorry, I couldn't answer right now." }]);
+    const errorMessage = error.message || "Sorry, I couldn't answer right now. Please try again.";
+    setMessages([...updatedHistory, { role: "model", content: `⚠️ ${errorMessage}` }]);
   }
   finally {
       setIsSending(false); // unlock send button after reply
