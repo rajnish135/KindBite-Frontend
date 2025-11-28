@@ -118,7 +118,7 @@ console.log("Logged-in userId:", userId);
   return (
     <div className="donations-container">
 
-      <h1>All Donations</h1>
+      <h1>List of Donors</h1>
 
       <div className="donations-grid">
         {loading ? (
