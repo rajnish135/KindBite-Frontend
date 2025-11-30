@@ -7,8 +7,8 @@ import { setDonations, setLoading, setError } from '../../store/donationSlice.js
 import { socket } from '../socket.js';
 import { getFreshness } from '../helperFunctions/getFreshness.js';
 
-export default function AllDonations() {
-  
+export default function AllDonations() 
+{
   const dispatch = useDispatch();
 
   const allDonations = useSelector(state => state.donations.list);
@@ -118,7 +118,7 @@ console.log("Logged-in userId:", userId);
   return (
     <div className="donations-container">
 
-      <h1>List of Donors</h1>
+      <h1>Donations List</h1>
 
       <div className="donations-grid">
         {loading ? (
