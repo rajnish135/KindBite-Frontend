@@ -145,7 +145,7 @@ export default function AdminDashboard() {
               <p><strong>Receiver Email:</strong> {donation.receiver?.email || "N/A"}</p>
 
               {donation.status === 'available' && (
-                <p><strong>Freshness:</strong> {getFreshness(donation.createdAt)}</p>
+                <p><strong>Freshness:</strong> {getFreshness(donation.expiryAt)}</p>
               )}
 
               {/* Delete button for ANY donation */}

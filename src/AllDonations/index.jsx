@@ -75,8 +75,6 @@ export default function AllDonations()
       console.log("Donation receiver._id:", res.data.receiver?._id);
 console.log("Logged-in userId:", userId);
 
-      
-
       alert(res.data.message);
     } 
 

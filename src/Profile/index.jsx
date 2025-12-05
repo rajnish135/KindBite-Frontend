@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 import axios from 'axios';
-import { logout} from '../../store/AuthSlice.js';
 import { useDispatch} from 'react-redux';
 
 const Profile = () => {
@@ -29,7 +28,6 @@ const Profile = () => {
           withCredentials: true,
         };
         
-        console.log("BEFORE REQUEST")
         //fetch user Profile
         const res1 = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/userDetails`, config);
 
@@ -53,12 +51,6 @@ const Profile = () => {
     
   }, []);
 
-  const handleLogout = () => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      dispatch(logout());
-      navigate('/login');
-    };
 
 
   return (
@@ -67,11 +59,12 @@ const Profile = () => {
         <div className="error-message">{message.text}</div>
       ) : (
         <>
-          <h2>Welcome, {username}!</h2>
+          
           
           {
             role === 'donor' && (
               <div>
+                <h2>Welcome, {username}!</h2>
                 <h3>Your Food Donations</h3>
 
                   <div className="food-data">
@@ -91,12 +84,6 @@ const Profile = () => {
             )
           }
           
-
-          <div className="profile-actions">
-            <button className="action-btn" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
         </>
       )}
     </div>

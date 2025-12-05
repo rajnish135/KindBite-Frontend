@@ -11,7 +11,6 @@
   import Profile from '../Profile';
   import DonorDonations from '../DonorDonations';
   import './style.css';
-  import AvailableDonations from '../AvailableDonations';
   import DonorReview from '../DonorReview';
   import ReceiverReviews from '../RecieverReview';
   import AdminDashboard from '../AdminDashboard';
@@ -24,8 +23,15 @@
 
   import { useEffect } from 'react';
   import { socket } from '../socket.js';
-import AdminFAQs from '../FAQs/AdminFAQs.jsx';
+  import AdminFAQs from '../FAQs/AdminFAQs.jsx';
 
+  /*
+  isAuthenticated is a custom prop we define to indicate whether the user is logged in or not.
+  
+  children is a special React prop that automatically contains the JSX nested inside a component, allowing components to wrap and control other components.
+  
+
+  */
   const ProtectedRoute = ({ isAuthenticated, children }) => {
     return isAuthenticated ? children : <Navigate to="/login" replace />;
   };
@@ -44,10 +50,10 @@ export default function App() {
   }, []);
 
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { token} = useSelector((state) => state.auth);
-    const isAuthenticated = !!token;
+    const dispatch = useDispatch(); 
+    const navigate = useNavigate();                           
+    const {token} = useSelector((state) => state.auth);       
+    const isAuthenticated = !!token;                         //passed as prop to ProtectedRoute
     const role = localStorage.getItem("role");
   
 
@@ -83,9 +89,11 @@ export default function App() {
               {
                 role === 'admin' && <li><Link to="/adminFAQs">FAQs</Link></li>
               }           
-
-              <li><Link to="/profile">Profile</Link></li>
-
+               
+              {
+                role === 'donor' && <li><Link to="/profile">Profile</Link></li>
+              }
+              
               {
                 role === 'donor' && (
                     <li><Link to="/recieverReviews">Reviews</Link></li>
@@ -130,8 +138,6 @@ export default function App() {
           <Route path="/donate" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Donate /></ProtectedRoute>} />
           
           <Route path="/myDonations" element={<ProtectedRoute isAuthenticated={isAuthenticated}><DonorDonations /></ProtectedRoute>} />
-          
-          <Route path="/availableDonations" element={<ProtectedRoute isAuthenticated={isAuthenticated}><AvailableDonations /></ProtectedRoute>} />
           
           <Route path="/profile" element={ <ProtectedRoute isAuthenticated={isAuthenticated}><Profile /></ProtectedRoute>} />
           

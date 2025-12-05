@@ -6,7 +6,7 @@ import './style.css'
 export default function Chatbot() {
 
 const [messages, setMessages] = useState([
-  { role: "model", content: "Hi 👋, I’m your KindBite Assistant. How can I help you today?" }
+  { role: "model", content: "Hi , I’m your KindBite Assistant. How can I help you today?" }
 ]);
 
 const [input, setInput] = useState("");
@@ -19,7 +19,7 @@ useEffect(() => {
   if (isOpen) {
     messagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }
-}, [isOpen, messages]); // 👈 run on both open and new messages
+}, [isOpen, messages]); //  run on both open and new messages
 
 
 
@@ -31,7 +31,7 @@ const handleSend = async () => {
   const newMessage = { role: "user", content: input };
   const updatedHistory = [...messages, newMessage];
   setMessages(updatedHistory);
-  setIsSending(true);     // ✅ lock send button
+  setIsSending(true);     // lock send button
 
   try {
     const reply = await sendMessage(input, updatedHistory);
@@ -40,7 +40,7 @@ const handleSend = async () => {
   catch (error) {
     console.error("Chatbot error:", error);
     const errorMessage = error.message || "Sorry, I couldn't answer right now. Please try again.";
-    setMessages([...updatedHistory, { role: "model", content: `⚠️ ${errorMessage}` }]);
+    setMessages([...updatedHistory, { role: "model", content: ` ${errorMessage}` }]);
   }
   finally {
       setIsSending(false); // unlock send button after reply
@@ -52,14 +52,14 @@ const handleSend = async () => {
 
 return (
     <div className="chatbot-container">
-      {/* Floating Toggle Button */}
+     
       {!isOpen && (
         <button className="chat-toggle-btn" onClick={() => setIsOpen(true)}>
           💬
         </button>
       )}
 
-      {/* Chat Window */}
+      
       {isOpen && (
 
         <div className="chatbot">
@@ -73,7 +73,7 @@ return (
             {messages.map((msg, i) => (
               <div
                 key={i}
-                ref={i === messages.length - 1 ? messagesRef : null}  // 👈 ref only on last message
+                ref={i === messages.length - 1 ? messagesRef : null}  //  ref only on last message
                 className={`message ${msg.role === "user" ? "user" : "bot"}`}
               >
                 <div className="bubble">{msg.content}</div>
@@ -87,7 +87,7 @@ return (
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask me anything..."
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              disabled={isSending} // ✅ lock input
+              disabled={isSending} // lock input
             />
             
            <button onClick={handleSend} disabled={isSending} className="send-btn">
